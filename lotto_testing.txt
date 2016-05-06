@@ -1,0 +1,141 @@
+from lotto import *
+gc = GameConf()
+board = Board(board_name="A", balls=[], gameConf=gc)
+b1 = Ball(10, gc)
+b2 = Ball(12, gc)
+b3 = Ball(14, gc)
+b4 = Ball(20, gc)
+b5 = Ball(30, gc)
+b6 = Ball(49, gc)
+b7 = Ball(13, gc)
+board.add_ball(b7)
+board.add_ball(b6)
+board.add_ball(b5)
+board.add_ball(b4)
+board.add_ball(b3)
+board.add_ball(b2)
+board.add_ball(b1)
+
+------------------------------------------------------------------------------------------
+
+from lotto import *
+gc = GameConf()
+p = Persistance()
+board_a = p.load("board_a.pickle")
+
+------------------------------------------------------------------------------------------
+
+
+dw1 = DivisionalWinner(div_number=1, number_of_correct_balls_required=6, special_ball_required=False, qty_winners=1, winning_value_per_winner=20000000)
+dw2 = DivisionalWinner(div_number=2, number_of_correct_balls_required=5, special_ball_required=True, qty_winners=2, winning_value_per_winner=242010)
+dw3 = DivisionalWinner(div_number=3, number_of_correct_balls_required=5, special_ball_required=False, qty_winners=107, winning_value_per_winner=10178)
+dw4 = DivisionalWinner(div_number=4, number_of_correct_balls_required=4, special_ball_required=True, qty_winners=283, winning_value_per_winner=2137)
+dw5 = DivisionalWinner(div_number=5, number_of_correct_balls_required=4, special_ball_required=False, qty_winners=6390, winning_value_per_winner=317)
+dw6 = DivisionalWinner(div_number=6, number_of_correct_balls_required=3, special_ball_required=True, qty_winners=8324, winning_value_per_winner=159)
+dw7 = DivisionalWinner(div_number=7, number_of_correct_balls_required=3, special_ball_required=False, qty_winners=120480, winning_value_per_winner=36)
+
+------------------------------------------------------------------------------------------
+
+dw1 = DivisionalWinner(div_number=1, number_of_correct_balls_required=6, special_ball_required=False)
+dw2 = DivisionalWinner(div_number=2, number_of_correct_balls_required=5, special_ball_required=True)
+dw3 = DivisionalWinner(div_number=3, number_of_correct_balls_required=5, special_ball_required=False)
+dw4 = DivisionalWinner(div_number=4, number_of_correct_balls_required=4, special_ball_required=True)
+dw5 = DivisionalWinner(div_number=5, number_of_correct_balls_required=4, special_ball_required=False)
+dw6 = DivisionalWinner(div_number=6, number_of_correct_balls_required=3, special_ball_required=True)
+dw7 = DivisionalWinner(div_number=7, number_of_correct_balls_required=3, special_ball_required=False)
+lotto_div_conf = [dw1, dw2, dw3, dw4, dw5, dw6, dw7]
+p = Persistance()
+p.save("lotto_div_conf.pickle", lotto_div_conf)
+
+
+------------------------------------------------------------------------------------------
+>>> p = Persistance()
+>>> ldc = p.load("lotto_div_conf.pickle")
+>>> len(ldc)
+7
+>>> for dw in ldc:
+...     print("Division number %s requires %s winning numbers. Requires special ball: %s" % (dw.div_number, dw.number_of_correct_balls_required, dw.special_ball_required))
+... 
+Division number 1 requires 6 winning numbers. Requires special ball: False
+Division number 2 requires 5 winning numbers. Requires special ball: True
+Division number 3 requires 5 winning numbers. Requires special ball: False
+Division number 4 requires 4 winning numbers. Requires special ball: True
+Division number 5 requires 4 winning numbers. Requires special ball: False
+Division number 6 requires 3 winning numbers. Requires special ball: True
+Division number 7 requires 3 winning numbers. Requires special ball: False
+
+------------------------------------------------------------------------------------------
+
+from lotto import *
+from datetime import date
+gc = GameConf()
+p = Persistance()
+board_a = p.load("board_a.pickle")
+ldc = p.load("lotto_div_conf.pickle")
+
+draw_b1 = Ball(value=41, gameConf=gc, isSpecial=False, isBallDrawnInGame=True)
+draw_b2 = Ball(value=40, gameConf=gc, isSpecial=False, isBallDrawnInGame=True)
+draw_b3 = Ball(value=45, gameConf=gc, isSpecial=False, isBallDrawnInGame=True)
+draw_b4 = Ball(value=19, gameConf=gc, isSpecial=False, isBallDrawnInGame=True)
+draw_b5 = Ball(value=28, gameConf=gc, isSpecial=False, isBallDrawnInGame=True)
+draw_b6 = Ball(value=12, gameConf=gc, isSpecial=False, isBallDrawnInGame=True)
+draw_b7 = Ball(value=14, gameConf=gc, isSpecial=True, isBallDrawnInGame=True)
+balls_drawn = [draw_b1, draw_b2, draw_b3, draw_b4, draw_b5, draw_b6, draw_b7]
+p.save("lotto_balls_drawn_game_1601.pickle", balls_drawn)
+
+------------------------------------------------------------------------------------------
+
+from lotto import *
+from datetime import date
+gc = GameConf()
+p = Persistance()
+board_a = p.load("board_a.pickle")
+ldc = p.load("lotto_div_conf.pickle")
+balls_drawn = p.load("lotto_balls_drawn_game_1601.pickle")
+
+game_draw = Draw(draw_date=date.today(), draw_number=1601, balls_drawn=balls_drawn, gameConf=gc, boards_played=[board_a])
+
+------------------------------------------------------------------------------------------
+
+from lotto import *
+from datetime import date
+gc_powerball = GameConf(game_name="PowerBall",min_number=1,max_number=45,keep_order=False,choose_special_on_play=True,special_name="PowerBall",special_min_number=1,special_max_number=20,number_qty_required = 5)
+gc_lotto = GameConf()
+p = Persistance()
+
+------------------------------------------------------------------------------------------
+
+[37] nicc777@Nicos-MacBook-Pro:~/tmp ➽  python
+Python 3.5.1 (default, Dec  7 2015, 21:59:10) 
+[GCC 4.2.1 Compatible Apple LLVM 7.0.0 (clang-700.1.76)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> from lotto import *
+>>> p = Persistance()
+>>> all_boards = p.load("all_boards.pickle")
+>>> for board in all_boards
+  File "<stdin>", line 1
+    for board in all_boards
+                          ^
+SyntaxError: invalid syntax
+>>> for board in all_boards:
+...     board
+... 
+Board A has the following balls: Playing game PowerBall. 11   25   27   42   43   Powerball: 2   
+Board B has the following balls: Playing game PowerBall. 19   20   21   22   29   Powerball: 15   
+Board C has the following balls: Playing game PowerBall. 1   6   8   31   33   Powerball: 11   
+Board D has the following balls: Playing game PowerBall. 4   12   16   17   23   Powerball: 18   
+Board E has the following balls: Playing game PowerBall. 15   20   23   25   27   Powerball: 17   
+Board F has the following balls: Playing game PowerBall. 5   23   29   31   39   Powerball: 9   
+Board G has the following balls: Playing game PowerBall. 13   20   21   31   38   Powerball: 9   
+Board H has the following balls: Playing game PowerBall. 16   20   22   37   43   Powerball: 1   
+Board I has the following balls: Playing game PowerBall. 7   8   15   33   37   Powerball: 14   
+Board J has the following balls: Playing game PowerBall. 2   11   26   30   37   Powerball: 17   
+Board A has the following balls: Playing game Lotto. 4   16   23   37   42   49   
+Board B has the following balls: Playing game Lotto. 6   14   27   33   41   48   
+Board C has the following balls: Playing game Lotto. 2   13   18   24   35   46   
+Board D has the following balls: Playing game Lotto. 15   20   26   34   41   47   
+Board E has the following balls: Playing game Lotto. 12   17   21   28   36   45   
+Board F has the following balls: Playing game Lotto. 22   30   32   38   43   44   
+Board G has the following balls: Playing game Lotto. 3   7   14   37   43   49   
+Board H has the following balls: Playing game Lotto. 2   14   25   33   41   49   
+
