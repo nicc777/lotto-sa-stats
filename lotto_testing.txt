@@ -55,7 +55,7 @@ p.save("lotto_div_conf.pickle", lotto_div_conf)
 7
 >>> for dw in ldc:
 ...     print("Division number %s requires %s winning numbers. Requires special ball: %s" % (dw.div_number, dw.number_of_correct_balls_required, dw.special_ball_required))
-... 
+...
 Division number 1 requires 6 winning numbers. Requires special ball: False
 Division number 2 requires 5 winning numbers. Requires special ball: True
 Division number 3 requires 5 winning numbers. Requires special ball: False
@@ -106,36 +106,30 @@ p = Persistance()
 ------------------------------------------------------------------------------------------
 
 [37] nicc777@Nicos-MacBook-Pro:~/tmp ➽  python
-Python 3.5.1 (default, Dec  7 2015, 21:59:10) 
+Python 3.5.1 (default, Dec  7 2015, 21:59:10)
 [GCC 4.2.1 Compatible Apple LLVM 7.0.0 (clang-700.1.76)] on darwin
 Type "help", "copyright", "credits" or "license" for more information.
 >>> from lotto import *
 >>> p = Persistance()
 >>> all_boards = p.load("all_boards.pickle")
->>> for board in all_boards
-  File "<stdin>", line 1
-    for board in all_boards
-                          ^
-SyntaxError: invalid syntax
 >>> for board in all_boards:
 ...     board
-... 
-Board A has the following balls: Playing game PowerBall. 11   25   27   42   43   Powerball: 2   
-Board B has the following balls: Playing game PowerBall. 19   20   21   22   29   Powerball: 15   
-Board C has the following balls: Playing game PowerBall. 1   6   8   31   33   Powerball: 11   
-Board D has the following balls: Playing game PowerBall. 4   12   16   17   23   Powerball: 18   
-Board E has the following balls: Playing game PowerBall. 15   20   23   25   27   Powerball: 17   
-Board F has the following balls: Playing game PowerBall. 5   23   29   31   39   Powerball: 9   
-Board G has the following balls: Playing game PowerBall. 13   20   21   31   38   Powerball: 9   
-Board H has the following balls: Playing game PowerBall. 16   20   22   37   43   Powerball: 1   
-Board I has the following balls: Playing game PowerBall. 7   8   15   33   37   Powerball: 14   
-Board J has the following balls: Playing game PowerBall. 2   11   26   30   37   Powerball: 17   
-Board A has the following balls: Playing game Lotto. 4   16   23   37   42   49   
-Board B has the following balls: Playing game Lotto. 6   14   27   33   41   48   
-Board C has the following balls: Playing game Lotto. 2   13   18   24   35   46   
-Board D has the following balls: Playing game Lotto. 15   20   26   34   41   47   
-Board E has the following balls: Playing game Lotto. 12   17   21   28   36   45   
-Board F has the following balls: Playing game Lotto. 22   30   32   38   43   44   
-Board G has the following balls: Playing game Lotto. 3   7   14   37   43   49   
-Board H has the following balls: Playing game Lotto. 2   14   25   33   41   49   
-
+...
+Board A has the following balls: Playing game PowerBall. 11   25   27   42   43   Powerball: 2
+Board B has the following balls: Playing game PowerBall. 19   20   21   22   29   Powerball: 15
+Board C has the following balls: Playing game PowerBall. 1   6   8   31   33   Powerball: 11
+Board D has the following balls: Playing game PowerBall. 4   12   16   17   23   Powerball: 18
+Board E has the following balls: Playing game PowerBall. 15   20   23   25   27   Powerball: 17
+Board F has the following balls: Playing game PowerBall. 5   23   29   31   39   Powerball: 9
+Board G has the following balls: Playing game PowerBall. 13   20   21   31   38   Powerball: 9
+Board H has the following balls: Playing game PowerBall. 16   20   22   37   43   Powerball: 1
+Board I has the following balls: Playing game PowerBall. 7   8   15   33   37   Powerball: 14
+Board J has the following balls: Playing game PowerBall. 2   11   26   30   37   Powerball: 17
+Board A has the following balls: Playing game Lotto. 4   16   23   37   42   49
+Board B has the following balls: Playing game Lotto. 6   14   27   33   41   48
+Board C has the following balls: Playing game Lotto. 2   13   18   24   35   46
+Board D has the following balls: Playing game Lotto. 15   20   26   34   41   47
+Board E has the following balls: Playing game Lotto. 12   17   21   28   36   45
+Board F has the following balls: Playing game Lotto. 22   30   32   38   43   44
+Board G has the following balls: Playing game Lotto. 3   7   14   37   43   49
+Board H has the following balls: Playing game Lotto. 2   14   25   33   41   49
