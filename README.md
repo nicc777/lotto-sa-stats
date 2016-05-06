@@ -12,7 +12,7 @@ At the time of writing this README, I am still busy putting together the Domain 
 
 How the all_boards.py file was created:
 
-  cat balls_played.txt | python ball_splitter.py > all_boards.py
+    cat balls_played.txt | python ball_splitter.py > all_boards.py
 
 The file `balls_played.txt` contains the data with the following syntax:
 
@@ -33,4 +33,4 @@ Example:
 
 Only two games are supported at the moment: The Lotto and PowerBall games.
 
-Note: The numbers I used was selected randomly, but I use them consistently throughout the project at this stage. Perhaps later I will create a random selector as well. 
+Note: The numbers I used was selected randomly, but I use them consistently throughout the project at this stage. Perhaps later I will create a random selector as well.
